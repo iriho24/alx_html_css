@@ -1,1 +1,26 @@
 
+/* Flex container for vertical layout of header, main, and footer */
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0; /* Optional: to remove default margin */
+}
+
+/* Flex container for horizontal layout of article and aside */
+main {
+  display: flex;
+  flex-direction: row;
+  flex: auto;
+}
+
+/* Main content should take up 2/3 of the space */
+article {
+  flex: 2;
+  overflow-y: auto;
+}
+
+/* Sidebar should take up 1/3 of the space */
+aside {
+  flex: 1;
+  overflow-y: auto;
+}
