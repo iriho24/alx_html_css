@@ -1,36 +1,144 @@
+/* ---------------- RESET ---------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Headphones</title>
-  <link rel="stylesheet" href="0-styles.css">
-</head>
-<body>
+/* ---------------- VARIABLES ---------------- */
+:root {
+  --accent: #FF6565;
+  --text: #FFFFFF;
+  --bg-dark: #1a1a1a;
+  --max-width: 1000px;
+  --font-main: "Source Sans Pro", Arial, sans-serif;
+}
 
-  <!-- HEADER / HERO SECTION -->
-  <header class="hero">
-    <nav class="nav container">
-      <a href="#" class="logo">
-        <img src="assets/images/logo.png" alt="Headphones Logo">
-      </a>
-      <ul class="nav-links">
-        <li><a href="#">What we do</a></li>
-        <li><a href="#">Our results</a></li>
-        <li><a href="#">Contact us</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span class="hamburger"></span>
-      </button>
-    </nav>
+/* ---------------- BASE ---------------- */
+body {
+  font-family: var(--font-main);
+  color: var(--text);
+  background-color: var(--bg-dark);
+  line-height: 1.5;
+}
 
-    <div class="hero-content container">
-      <h1>Lorem ipsum dolor set amet lorem ipsum</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <a href="#" class="btn">CALL TO ACTION</a>
-    </div>
-  </header>
+img {
+  max-width: 100%;
+  display: block;
+}
 
-</body>
-</html>
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------------- NAVIGATION ---------------- */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:active {
+  color: var(--accent);
+}
+
+/* ---------------- MOBILE NAV TOGGLE ---------------- */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  left: 0;
+}
+
+.hamburger::before {
+  top: -6px;
+}
+
+.hamburger::after {
+  top: 6px;
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+  background: url("assets/images/hero-background.jpg") center/cover no-repeat;
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.btn {
+  background-color: var(--accent);
+  color: var(--text);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.btn:hover,
+.btn:active {
+  opacity: 0.9;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 480px) {
+  .nav-links {
+    display: none; /* for mobile menu functionality */
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .hero {
+    padding: 4rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+}
