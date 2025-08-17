@@ -1,0 +1,300 @@
+/* ---------------- RESET ---------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------------- VARIABLES ---------------- */
+:root {
+  --accent: #FF6565;           /* links hover/active & primary */
+  --text: #FFFFFF;
+  --text-dark: #111111;
+  --muted: #666666;
+  --bg-dark: #1a1a1a;
+  --bg-light: #FFFFFF;
+  --max-width: 1000px;         /* centered content max width */
+  --font-main: "Source Sans Pro", Arial, sans-serif;
+}
+
+/* ---------------- BASE ---------------- */
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text);
+  background-color: var(--bg-dark);
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------------- NAV ---------------- */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.logo {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  transition: color .2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:active {
+  color: var(--accent); /* required link hover/active color */
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  left: 0;
+}
+
+.hamburger::before { top: -6px; }
+.hamburger::after  { top:  6px; }
+
+/* ---------------- HERO ---------------- */
+.hero {
+  /* Use your existing hero image if desired (not related to pentagons requirement) */
+  background: url("images/headphones_hero_1.jpg") center/cover no-repeat;
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 640px;
+  margin: 0 auto 2rem;
+  color: #e9e9e9;
+}
+
+.btn {
+  background-color: var(--accent);
+  color: var(--text);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity .2s ease;
+}
+
+.btn:hover,
+.btn:active {
+  opacity: 0.9; /* required button hover/active opacity */
+}
+
+/* ---------------- WHAT WE DO ---------------- */
+.what-we-do {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.what-we-do .lead {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  color: var(--muted);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 2rem;
+}
+
+.feature .icon {
+  font-size: 3rem;
+  color: var(--accent);
+  display: inline-block;
+  margin-bottom: .75rem;
+}
+
+.feature h3 {
+  font-size: 1.125rem;
+  margin-bottom: .25rem;
+}
+
+.feature p {
+  color: var(--muted);
+}
+
+/* ---------------- OUR RESULTS ---------------- */
+.our-results {
+  background: #0f0f10;
+  color: var(--text);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.our-results .lead {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  color: #cfcfcf;
+}
+
+/* Grid holding KPI pentagons */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+/* Reusable KPI item */
+.kpi {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+/* The pentagon shape — PURE CSS, no image */
+.pentagon {
+  width: 160px;
+  height: 160px;
+  /* A nice subtle gradient; still CSS only */
+  background: linear-gradient(180deg, var(--accent), #ff7f7f);
+  /* Pentagon via clip-path: 5 vertices */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.35));
+  transition: transform .2s ease, filter .2s ease;
+}
+
+/* Optional beveled edge using an inner pseudo-element (still CSS-only) */
+.pentagon::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,0));
+  clip-path: inherit; /* same pentagon shape */
+  transform: translateY(2px);
+  pointer-events: none;
+}
+
+/* Hover effect */
+.kpi:hover .pentagon {
+  transform: translateY(-4px) scale(1.02);
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,.45));
+}
+
+/* Value text sits centered above the shape using absolute positioning */
+.kpi .value {
+  position: absolute;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: .5px;
+  /* Center it visually (tweak if needed) */
+  transform: translateY(-6px);
+}
+
+/* Label under each badge */
+.kpi .label {
+  margin-top: 1rem;
+  color: #d6d6d6;
+}
+
+/* ---------------- CONTACT ---------------- */
+.contact {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.contact-form {
+  max-width: 520px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: .75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: .75rem;
+  font: inherit;
+}
+
+.contact-form button {
+  justify-self: center;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 900px) {
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Required responsive switch */
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+
+  .hero { padding: 4rem 1rem; }
+  .hero h1 { font-size: 1.75rem; }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pentagon {
+    width: 140px;
+    height: 140px;
+  }
+}
